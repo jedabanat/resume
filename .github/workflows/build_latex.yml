@@ -9,10 +9,12 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v3
       - name: Compile LaTeX document
+        env:
+          PDF_NAME: '"Jed Abanat Resume.pdf"'
         uses: xu-cheng/latex-action@v3
         with:
           root_file: resume.tex
-          args: -jobname=$PDF_NAME
+          args: -jobname=${{ env.PDF_NAME }}
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
