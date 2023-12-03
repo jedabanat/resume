@@ -12,12 +12,12 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: resume.tex
-          args: -jobname= ${PDF_NAME}
+          args: -jobname=$PDF_NAME
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: ${PDF_NAME}
+          path: $PDF_NAME
           
       - uses: actions/download-artifact@v3    
         
