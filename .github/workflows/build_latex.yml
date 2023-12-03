@@ -9,12 +9,12 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: Jed Abanat Resume.tex
+          root_file: "Jed Abanat Resume.tex"
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: Jed Abanat Resume.pdf
+          path: "Jed Abanat Resume.pdf"
           
       - uses: actions/download-artifact@v3
         
