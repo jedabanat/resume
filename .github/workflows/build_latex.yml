@@ -10,11 +10,12 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: resume.tex
+          args: -jobname="JedAbanatResume"
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: resume.pdf
+          path: JedAbanatResume.pdf
           
       - uses: actions/download-artifact@v3    
         
@@ -27,6 +28,14 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: PDF
 
+      # Replace latest release
+      - name: Clean | Latest
+        uses: dev-drprasad/delete-tag-and-release@v1.0.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          delete_release: true
+          tag_name: latest
+          
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
