@@ -20,3 +20,12 @@ jobs:
         
       - name: Display structure of downloaded files
         run: ls -R
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: .
+          force_orphan: true
+          commit_message: 'release: update gh-pages to latest version'
