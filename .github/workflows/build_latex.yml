@@ -38,6 +38,7 @@ jobs:
           tag_name: latest
           
       - name: Release
+        id: create_release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: latest
@@ -46,3 +47,10 @@ jobs:
           draft: false
           files: |
             resume.pdf
+            
+      - name: Publish release
+        uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
