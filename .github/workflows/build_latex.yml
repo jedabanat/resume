@@ -29,7 +29,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: PDF
 
-      # Replace latest release
       - name: Cleanup releases
         uses: dev-drprasad/delete-tag-and-release@v1.0.1
         with:
@@ -37,7 +36,7 @@ jobs:
           delete_release: true
           tag_name: latest
           
-      - name: Release
+      - name: Create release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
