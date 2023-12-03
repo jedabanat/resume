@@ -3,25 +3,22 @@ on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
-    env:
-      PDF_NAME: '"Jed Abanat Resume.pdf"'
     steps:
-      - name: Set up Git repository
+      - name: Setup & Checkout
         uses: actions/checkout@v3
+        
       - name: Compile LaTeX document
-        env:
-          PDF_NAME: '"Jed Abanat Resume.pdf"'
         uses: xu-cheng/latex-action@v3
         with:
           root_file: resume.tex
-          args: -jobname=${{ env.PDF_NAME }}
+          
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: $PDF_NAME
+          path: resume.pdf
           
-      - uses: actions/download-artifact@v3    
+      - uses: actions/download-artifact@v3
         
       - name: Display structure of downloaded files
         run: ls -R
@@ -33,7 +30,7 @@ jobs:
           publish_dir: PDF
 
       # Replace latest release
-      - name: Clean | Latest
+      - name: Cleanup releases
         uses: dev-drprasad/delete-tag-and-release@v1.0.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
