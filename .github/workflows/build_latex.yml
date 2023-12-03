@@ -42,6 +42,7 @@ jobs:
         with:
           tag_name: latest
           name: Resume
+          body: My latest resume
           draft: false
           files: |
             resume.pdf
