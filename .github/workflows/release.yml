@@ -12,15 +12,12 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: resume.tex
-          
-      - name: Rename file
-        run: mv resume.pdf "JedAbanat-Resume.pdf"
       
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: "JedAbanat-Resume.pdf"
+          path: resume.pdf
         
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
