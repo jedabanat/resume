@@ -49,7 +49,7 @@ jobs:
           body: My latest resume
           draft: false
           files: |
-            "Jed Abanat Resume.pdf"
+            *.pdf
             
       - name: Publish release
         uses: eregon/publish-release@v1
