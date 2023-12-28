@@ -14,18 +14,13 @@ jobs:
           root_file: resume.tex
           
       - name: Rename file
-        run: mv resume.pdf "Jed Abanat Resume.pdf"
+        run: mv resume.pdf "JedAbanat-Resume.pdf"
       
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
           name: PDF
-          path: "Jed Abanat Resume.pdf"
-          
-      - uses: actions/download-artifact@v3
-        
-      - name: Display structure of downloaded files
-        run: ls -R
+          path: "JedAbanat-Resume.pdf"
         
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
