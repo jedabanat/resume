@@ -1,0 +1,54 @@
+name: Release
+on: [push]
+    
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup & Checkout
+        uses: actions/checkout@v3
+        
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          
+      - name: Rename file
+        run: mv resume.pdf "Jed Abanat Resume.pdf"
+      
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
+        with:
+          name: PDF
+          path: "Jed Abanat Resume.pdf"
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: PDF
+
+      - name: Cleanup releases
+        uses: dev-drprasad/delete-tag-and-release@v1.0.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          delete_release: true
+          tag_name: latest
+          
+      - name: Create release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest
+          name: Resume
+          body: My latest resume
+          draft: false
+          files: |
+            "Jed Abanat Resume.pdf"
+            
+      - name: Publish release
+        uses: eregon/publish-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release_id: ${{ steps.create_release.outputs.id }}
