@@ -1,0 +1,31 @@
+% Creates a two-column table for displaying paired content
+\newcommand{\headerrow}[2] {
+    \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+        #1 &
+        #2 \\
+    \end{tabular*}
+}
+
+% Creates a list of tasks/responsibilities within a work experience entry
+\newcommand{\workExperienceSubItem}[1]{
+    \begin{itemize*}
+        \vspace{-0.5em}
+        #1
+    \end{itemize*}
+}
+
+% Creates new Work Experience entry
+\newcommand{\workExperienceItem}[4] {
+    \headerrow{\textbf{#1}}{\textbf{#2}} % Company (#1) & Location (#2)
+    \headerrow{\emph{#3}}{\emph{#4}} % Title (#3) & Tenure (#4)
+    \vspace{-1.5em}
+}
+
+% Creates a custom subsection heading with horizontal line
+\newcommand{\heading}[1]{
+    \subsection*{#1}
+    \vspace{-0.25em}
+    \hrule
+    \vspace{1em}
+    \parskip=0.1em
+}
