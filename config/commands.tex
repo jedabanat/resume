@@ -6,7 +6,7 @@
     \end{tabular*}
 }
 
-% Creates a list of items sub-item within a work experience entry using an itemized list.
+% Creates a list of tasks/responsibilities within a work experience entry
 \newcommand{\workExperienceSubItem}[1]{
     \begin{itemize*}
         \vspace{-0.5em}
@@ -14,13 +14,14 @@
     \end{itemize*}
 }
 
-% Combines company and work experience details, utilizing \headerrow for formatting.
+% Creates new Work Experience entry
 \newcommand{\workExperienceItem}[4] {
-    \headerrow{\textbf{#1}}{\textbf{#2}} % Company & location
-    \headerrow{\emph{#3}}{\emph{#4}} % Title & tenure
+    \headerrow{\textbf{#1}}{\textbf{#2}} % Company (#1) & Location (#2)
+    \headerrow{\emph{#3}}{\emph{#4}} % Title (#3) & Tenure (#4)
     \vspace{-1.5em}
 }
 
+% Creates a custom subsection heading with horizontal line
 \newcommand{\heading}[1]{
     \subsection*{#1}
     \vspace{-0.25em}
