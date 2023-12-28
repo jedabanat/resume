@@ -1,141 +1,16 @@
 % Jed Abanat Resume
-
 \documentclass[10pt,letterpaper]{article}
-\usepackage[letterpaper,margin=0.5in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage{mdwlist}
-\usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage[none]{hyphenat}
-\usepackage{tgpagella}
-\usepackage[hidelinks]{hyperref}
-\usepackage[document]{ragged2e} % justifying
-\usepackage{multicol}
-\pagestyle{empty}
-\setlength{\tabcolsep}{0em}
 
-% indentsection style, used for sections that aren't already in lists
-% that need indentation to the level of all text in the document
-\newenvironment{indentsection}[1]%
-{\begin{list}{}%
-	{\setlength{\leftmargin}{#1}}%
-	\item[]%
-}
-{\end{list}}
+% import configuration
+\input{config/packages}
+\input{config/commands}
+\input{config/formatting}
 
-% opposite of above; bump a section back toward the left margin
-\newenvironment{unindentsection}[1]%
-{\begin{list}{}%
-	{\setlength{\leftmargin}{-0.5#1}}%
-	\item[]%
-}
-{\end{list}}
-
-% format two pieces of text, one left aligned and one right aligned
-\newcommand{\headerrow}[2]
-{\begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
-	#1 &
-	#2 \\
-\end{tabular*}}
-
-% make "C++" look pretty when used in text by touching up the plus signs
-\newcommand{\CPP}
-{C\nolinebreak[4]\hspace{-.05em}\raisebox{.22ex}{\footnotesize\bf ++}}
-
-\tolerance=1
-\emergencystretch=\maxdimen
-\hyphenpenalty=10000
-\hbadness=10000
-\setlength{\parindent}{0pt}
-
-% and the actual content starts here
+% import resume sections
 \begin{document}
-
-\input{common/header.tex}
-I am an experienced software engineer proficient in building and maintaining Windows desktop applications in C\# with a strong understanding of designing \& implementing signal processing algorithms. I’ve worked autonomously as a sole developer for most of my career, leading development initiatives from conception to global deployment. I actively question the requirements and collaborate cross-functionally to ensure the best solution is developed. As a  passionate advocate for automation, I strive to streamline processes within both the development workflow and the product itself.
-
-\subsection*{Work Experience}
-\vspace{-0.25em}
-\hrule
-\vspace{1em}
-\parskip=0.1em
-
-\headerrow
-    {\textbf{Career Break / Travel}}
-    {\textit{July 2023 - Present}}
-    \begin{itemize*}
-    \vspace{-0.5em}
-    \item Resigned to travel and relocate back to Australia.  
-        \end{itemize*}
-
-\headerrow
-    {\textbf{Fugro USA Marine}}
-    {\textbf{Houston, TX, USA}}
-	\headerrow
-		{\emph{Innovation (Software) Engineer}}
-		{\emph{Sep 2019 - July 2023}} \\
-  
-    \begin{itemize*}
-    \vspace{-0.5em}
-    \item Technical lead of a software suite which processed airborne lidar bathymetry data. Wrote 70\% of the code and reviewed the remaining 30\%. 
-    \item \justifying{Developed a novel bathymetric lidar processing solution with the ML team which replaced traditional signal processing algorithms with an image recognition approach. Resulted in 95\% less noise \& improved accuracy of final product by 30\%. Filed a patent for this invention - \textit{‘Machine Learning Processing of Airborne Lidar Bathymetric Waveform Data’}}
-    \item Refactored original MATLAB processing app into a .NET console app in C\#, following SOLID design principles \& implementing Test-Driven Development practices. Increased test coverage from 0\% to 65\%.
-    \item Architected and implemented a high-performance data processing pipeline using TPL Dataflow with a multi-process, event-driven approach achieving an 80\% reduction in processing time. Utilized Microsoft ONNX Runtime \& CUDA to run inference on the raw data with NVIDIA GPUs.
-    \item Designed user interfaces in WPF using MVVM, working with end-users to achieve an intuitive user experience. The UI displayed the raw data along with various plots and graphs to assist data processors during QC/QA.
-    \item Effectively served as Agile Product Owner for 18 months, actively engaging with end-users to gather requirements, prioritise deliverables, and define the development roadmap, ensuring alignment with business objectives. 
-    \item Built 2 additional .NET apps to support field staff; an automatic data transfer tool to copy raw data (2TB/flight) \& a QC tool to generate georeferenced images collected during the flight.
-    \item Implemented CI/CD workflows in GitHub Actions, reducing release time by 2 hours.
-    \item Rotated through two other teams and contributed to separate Windows application development; collaborated with architects to refactor legacy C\# code \& added functionality to encode/decode messages via TCP which allowed operators to remotely control winches. 
-    \item Contributed to Visual Studio .NET project configuration templates to standardise all .NET repos in the company.
-    \item \justifying{Led on-boarding programs and mentored colleagues, providing technical guidance and demonstrating best-practices.}
-    \end{itemize*}
-
-    \headerrow
-    {\textbf{Fugro Australia Marine}}
-    {\textbf{Adelaide, Australia}}
-
-	\headerrow
-		{\emph{Airborne Software Engineer}}
-		{\emph{Mar 2018 - Sep 2019}} \\
-    \begin{itemize*}
-    \vspace{-0.5em}
-\item Maintained and improved an acquired MATLAB code-base as the sole developer, working autonomously to fix bugs and add additional features requested by data processors.
-\item Researched, tested and implemented signal processing \& noise filtering algorithms to meet client requirements. 
-\item Travelled to Houston regularly to meet directly with end-users and external clients to gather requirements and collect app feedback. Provided hands-on field support and gained additional context to proactively identify \& address bottlenecks in the processing workflow.
-\item Led fortnightly planning and demo meetings with end-users to ensure alignment on key priorities and to collect feedback on new features \& bug fixes, resulting in improved user satisfaction.
-\item Automated the deployment of the MATLAB code using Ruby scripts to compile (MATLAB Compiler) and generate an installer (WiX Toolkit).
-\item Developed comprehensive test procedure documents to compare the performance and accuracy of Fugro’s lidar sensors. Designed a rubric and scoring system for fair comparison between the sensors and provided recommendations to management for future development efforts.
-\item Designed mounting plates in AutoCAD to install lidar sensors in aircraft, adhering to all Civil Aviation Safety Authority (CASA) standard while ensuring mounting plate was adaptable to multiple aircraft.
-    \end{itemize*}
-
-\newpage
-\vspace{.5em}
-\headerrow
-{\emph{Engineering Intern}}
-{\emph{Jan 2018 - Mar 2018}} \\
- \begin{itemize*}
-\vspace{-0.5em}
-\item Independently conducted thorough analysis of an acquired code-base in MATLAB (\textasciitilde 8000 lines) to identify and understand each component and function of the process.  
-\item Produced comprehensive technical documentation and detailed flowchart diagrams explaining the code to global stakeholders, resulting in improved cross-functional collaboration between the Adelaide \& Houston offices. 
-\item Designed a UI for the code using MATLAB GUIDE, working with end-users to design an intuitive \& interactive tool.
-
-\end{itemize*}    
-
-\subsection*{Technical Skills}
-\vspace{-0.25em}
-\hrule
-\vspace{1em}
-\textbf{Languages:} C\#, MATLAB, Ruby, Python\\
-\textbf{Frameworks:} .NET (Core \& Framework), WPF, Blazor \\
-\textbf{Developer Tools:} Git, Jira, TestRail, WiX Toolkit, Inno Setup 
-
-% EDUCATION %
-\subsection*{Education}
-\hrule
-\vspace{1em}
-{\textbf{The University of Adelaide}} \\
-\headerrow
-    {\emph{Bachelor of Engineering (Mechatronics) (Honours)}}
-    {\emph{2014 - 2018}}
-
+\input{section/header}
+\input{section/summary}
+\input{section/experience}
+\input{section/skills}
+\input{section/education}
 \end{document}

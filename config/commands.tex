@@ -1,0 +1,30 @@
+% Creates a two-column table for displaying paired content
+\newcommand{\headerrow}[2] {
+    \begin{tabular*}{\linewidth}{l@{\extracolsep{\fill}}r}
+        #1 &
+        #2 \\
+    \end{tabular*}
+}
+
+% Creates a list of items sub-item within a work experience entry using an itemized list.
+\newcommand{\workExperienceSubItem}[1]{
+    \begin{itemize*}
+        \vspace{-0.5em}
+        #1
+    \end{itemize*}
+}
+
+% Combines company and work experience details, utilizing \headerrow for formatting.
+\newcommand{\workExperienceItem}[4] {
+    \headerrow{\textbf{#1}}{\textbf{#2}} % Company & location
+    \headerrow{\emph{#3}}{\emph{#4}} % Title & tenure
+    \vspace{-1.5em}
+}
+
+\newcommand{\heading}[1]{
+    \subsection*{#1}
+    \vspace{-0.25em}
+    \hrule
+    \vspace{1em}
+    \parskip=0.1em
+}
