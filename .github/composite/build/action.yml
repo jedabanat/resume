@@ -1,16 +1,16 @@
 name: Build
-description: Compile LaTex document & upload artifact
+description: Compile LaTeX document & upload artifact
 
 runs:
   using: "composite"
-steps:
-  - name: Compile LaTeX document
-    uses: xu-cheng/latex-action@v3
-    with:
-      root_file: resume.tex
+  steps:
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: resume.tex
 
-  - name: Upload PDF file
-    uses: actions/upload-artifact@v3
-    with:
-      name: PDF
-      path: resume.pdf
+    - name: Upload PDF file
+      uses: actions/upload-artifact@v3
+      with:
+        name: PDF
+        path: resume.pdf
