@@ -1,5 +1,10 @@
 # Jed Abanat - LaTex Resume/CV
 
-[![Build LaTeX document](https://github.com/jedabanat/latex-resume/actions/workflows/build_latex.yml/badge.svg?branch=build_latex_action)](https://github.com/jedabanat/latex-resume/actions/workflows/build_latex.yml)
+<p align="center">
+    <a href="https://github.com/jedabanat/resume/releases" alt="Latest Release">
+        <img src="https://img.shields.io/github/release-date/jedabanat/resume?logo=github&label=Last%20Release" /></a>        
+    <a href="https://github.com/jedabanat/resume/actions/workflows/release.yml" alt="Build Status">
+        <img src="https://img.shields.io/github/actions/workflow/status/jedabanat/resume/release.yml?logo=github&label=Build" /></a>
+</p>
 
-Find my latest resume [here](https://jedabanat.github.io/resume/resume.pdf)
+Repository containing LaTex source of Jed Abanat's resume. Latest copy can be found [here.](https://jedabanat.github.io/resume/resume.pdf)
