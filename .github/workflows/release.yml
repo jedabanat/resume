@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
       
       - name: Cleanup releases
         uses: dev-drprasad/delete-tag-and-release@v1.0.1
@@ -48,7 +48,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [release]
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
