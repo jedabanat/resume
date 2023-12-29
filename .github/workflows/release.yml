@@ -10,25 +10,14 @@ jobs:
       - name: Setup & Checkout
         uses: actions/checkout@v3
         
-      - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v3
-        with:
-          root_file: resume.tex
-      
-      - name: Upload PDF file
-        uses: actions/upload-artifact@v3
-        with:
-          name: PDF
-          path: resume.pdf
+      - name: Build
+      - uses: ./.github/composite/build
           
   release:
     runs-on: ubuntu-latest
     needs: [build]
     steps:
       - uses: actions/download-artifact@v3
-
-      - name: Display structure of downloaded files
-        run: ls -R
       
       - name: Cleanup releases
         uses: dev-drprasad/delete-tag-and-release@v1.0.1
