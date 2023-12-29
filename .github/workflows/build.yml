@@ -9,4 +9,4 @@ jobs:
       - name: Setup & Checkout
         uses: actions/checkout@v3
 
-      - uses: ./composite/build
+      - uses: ./.github/composite/build
