@@ -9,5 +9,8 @@ jobs:
       - name: Setup & Checkout
         uses: actions/checkout@v4
 
-      - name: Build
-        uses: ./.github/composite/build
+      - name: Build Resume
+        uses: ./.github/composite/build-resume
+
+      - name: Build Cover Letter
+        uses: ./.github/composite/build-coverletter
