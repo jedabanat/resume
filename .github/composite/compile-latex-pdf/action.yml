@@ -34,12 +34,17 @@ runs:
       with:
         name: ${{ inputs.latex_file }}
         path: "${{ inputs.pdf_file }}"
-        
+  
+    - name: Make Upload Directory
+      run: >
+        mkdir -p "${{ github.base_ref || github.ref_name }}" &&
+        cp -r "${{ inputs.pdf_file }}" "${{ github.base_ref || github.ref_name }}/"
+
     - name: Upload to Google Drive
-      uses: willo32/google-drive-upload-action@v1.1.0
+      uses: adityak74/google-drive-upload-git-action@v0.3
       with:
-        credentials: ${{ inputs.credentials }}
-        parent_folder_id: ${{ inputs.folder_id }}
-        target: "${{ inputs.pdf_file }}"
-        child_folder: ${{ github.base_ref || github.ref_name }}
-        overwrite: true
+          credentials: ${{ secrets.credentials }}
+          filename: "${{ github.base_ref || github.ref_name }}/${{ inputs.pdf_file }}"
+          folderId: ${{ secrets.folder_id }}
+          overwrite: "true"
+          mirrorDirectoryStructure: "true"
