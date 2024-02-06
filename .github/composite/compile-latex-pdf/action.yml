@@ -1,0 +1,52 @@
+name: Build PDF
+description: Compile LaTeX PDF & upload artifact
+
+inputs:
+  latex_file:
+    description: LaTex filename to compile (without file extension)
+    required: true
+    default: "resume"
+  pdf_file:
+    description: PDF filename (with file extension)
+    required: true
+    default: "resume.pdf"
+  credentials:
+    description: Google Drive credentials
+    required: true
+  folder_id:
+    description: Google Drive folder ID
+    required: true
+    
+runs:
+  using: "composite"
+  steps:
+    - name: Compile LaTeX document
+      uses: xu-cheng/latex-action@v3
+      with:
+        root_file: ${{ inputs.latex_file }}.tex
+        
+    - name: Rename PDF file
+      if: startsWith(inputs.pdf_file, 'resume') == false
+      run: mv ${{ inputs.latex_file }}.pdf "${{ inputs.pdf_file }}"
+      shell: bash
+      
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.latex_file }}
+        path: "${{ inputs.pdf_file }}"
+  
+    - name: Make Upload Directory
+      run: >
+        mkdir -p "${{ github.base_ref || github.ref_name }}" &&
+        cp -r "${{ inputs.pdf_file }}" "${{ github.base_ref || github.ref_name }}/"
+      shell: bash
+
+    - name: Upload to Google Drive
+      uses: adityak74/google-drive-upload-git-action@v0.3
+      with:
+          credentials: ${{ inputs.credentials }}
+          filename: "${{ github.base_ref || github.ref_name }}/${{ inputs.pdf_file }}"
+          folderId: ${{ inputs.folder_id }}
+          overwrite: "true"
+          mirrorDirectoryStructure: "true"

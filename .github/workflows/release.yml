@@ -10,8 +10,11 @@ jobs:
       - name: Setup & Checkout
         uses: actions/checkout@v4
         
-      - name: Build
-        uses: ./.github/composite/build
+      - name: Build Resume
+        uses: ./.github/composite/compile-latex-pdf
+        with:
+          credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
+          folder_id: ${{ secrets.FOLDER_ID }}
           
   release:
     runs-on: ubuntu-latest
@@ -35,7 +38,7 @@ jobs:
           body: My latest resume
           draft: false
           files: |
-            PDF/resume.pdf
+            resume/resume.pdf
             
       - name: Publish release
         uses: eregon/publish-release@v1
@@ -54,5 +57,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: PDF
-          
+          publish_dir: resume
