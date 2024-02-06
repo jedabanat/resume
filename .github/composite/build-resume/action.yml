@@ -1,6 +1,14 @@
 name: Build Resume
 description: Compile LaTeX Resume & upload artifact
 
+inputs:
+  credentials:
+    description: Google Drive credentials
+    required: true
+  folderId:
+    description: Folder ID
+    required: true
+    
 runs:
   using: "composite"
   steps:
@@ -18,6 +26,6 @@ runs:
     - name: Upload to gdrive
       uses: adityak74/google-drive-upload-git-action@main
       with:
-        credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
+        credentials: ${{ inputs.credentials }}
         filename: "resume.pdf"
-        folderId: ${{ secrets.FOLDER_ID }}
+        folderId: ${{ inputs.folderId }}
