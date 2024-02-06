@@ -16,17 +16,20 @@ runs:
       uses: xu-cheng/latex-action@v3
       with:
         root_file: resume.tex
-
+        
+    - name: Rename PDF file
+      run: mv resume.pdf "Jed Abanat Resume.pdf"
+      
     - name: Upload PDF file
       uses: actions/upload-artifact@v4
       with:
         name: Resume
-        path: resume.pdf
+        path: "Jed Abanat Resume.pdf"
         
-    - name: Upload to gdrive
+    - name: Upload to Google Drive
       uses: willo32/google-drive-upload-action@v1
       with:
         credentials: ${{ inputs.credentials }}
         parent_folder_id: ${{ inputs.folderId }}
-        target: "resume.pdf"
+        target: "Jed Abanat Resume.pdf"
         child_folder: ${{ github.base_ref || github.ref_name }}
