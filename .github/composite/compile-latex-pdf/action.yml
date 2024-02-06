@@ -26,7 +26,7 @@ runs:
         root_file: ${{ inputs.latex_file }}.tex
         
     - name: Rename PDF file
-      if: ${{ inputs.latex_file }} != ${{ inputs.pdf_file | replace('.pdf', '') }}
+      if: startsWith(inputs.latex_file, 'resume') == false
       run: mv ${{ inputs.latex_file }}.pdf "${{ inputs.pdf_file }}"
       shell: bash
       
