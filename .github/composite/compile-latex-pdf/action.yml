@@ -5,9 +5,11 @@ inputs:
   latex_file:
     description: LaTex filename to compile (without file extension)
     required: true
+    default: "resume"
   pdf_file:
     description: PDF filename (without file extension)
     required: true
+    default: "resume"
   credentials:
     description: Google Drive credentials
     required: true
