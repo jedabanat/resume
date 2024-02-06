@@ -3,7 +3,8 @@ on:
   push:
 
 jobs:
-  build:
+  build-resume:
+    name: Build Resume
     runs-on: ubuntu-latest
     steps:
       - name: Setup & Checkout
@@ -15,7 +16,14 @@ jobs:
           latex_file: "resume"
           pdf_file: "Jed Abanat Resume.pdf"
           credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
-          folderId: ${{ secrets.FOLDER_ID }}
+          folder_id: ${{ secrets.FOLDER_ID }}
+
+  build-coverletter:
+    name: Build Cover Letter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup & Checkout
+        uses: actions/checkout@v4
 
       - name: Compile Cover Letter
         uses: ./.github/composite/compile-latex-pdf
@@ -23,4 +31,4 @@ jobs:
           latex_file: "coverletter"
           pdf_file: "Jed Abanat Cover Letter.pdf"
           credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
-          folderId: ${{ secrets.FOLDER_ID }}
+          folder_id: ${{ secrets.FOLDER_ID }}
