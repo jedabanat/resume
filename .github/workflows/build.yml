@@ -11,6 +11,9 @@ jobs:
 
       - name: Build Resume
         uses: ./.github/composite/build-resume
+        with:
+          credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
+          folderId: ${{ secrets.FOLDER_ID }}
 
       - name: Build Cover Letter
         uses: ./.github/composite/build-coverletter
