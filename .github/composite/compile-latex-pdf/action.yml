@@ -2,17 +2,17 @@ name: Build PDF
 description: Compile LaTeX PDF & upload artifact
 
 inputs:
-  file:
-    description: LaTex filename to compile
+  latex_file:
+    description: LaTex filename to compile (without file extension)
     required: true
-  output:
-    description: Output PDF filename
+  pdf_file:
+    description: PDF filename (without file extension)
     required: true
   credentials:
     description: Google Drive credentials
     required: true
-  folderId:
-    description: Folder ID
+  folder_id:
+    description: Google Drive folder ID
     required: true
     
 runs:
@@ -21,22 +21,23 @@ runs:
     - name: Compile LaTeX document
       uses: xu-cheng/latex-action@v3
       with:
-        root_file: ${{ inputs.file }}.tex
+        root_file: ${{ inputs.latex_file }}.tex
         
     - name: Rename PDF file
-      run: mv ${{ inputs.file }}.pdf "${{ inputs.output }}"
+      run: mv ${{ inputs.latex_file }}.pdf "${{ inputs.pdf_file }}"
       shell: bash
       
-    - name: Upload PDF file
+    - name: Upload PDF artifact
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ inputs.file }}
-        path: "${{ inputs.output }}"
+        name: ${{ inputs.latex_file }}
+        path: "${{ inputs.pdf_file }}"
         
     - name: Upload to Google Drive
       uses: willo32/google-drive-upload-action@v1
       with:
         credentials: ${{ inputs.credentials }}
-        parent_folder_id: ${{ inputs.folderId }}
-        target: "Jed Abanat Resume.pdf"
+        parent_folder_id: ${{ inputs.folder_id }}
+        target: "${{ inputs.pdf_file }}"
         child_folder: ${{ github.base_ref || github.ref_name }}
+        override: true

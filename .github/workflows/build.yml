@@ -12,15 +12,15 @@ jobs:
       - name: Compile Resume
         uses: ./.github/composite/compile-latex-pdf
         with:
-          file: "resume"
-          output: "Jed Abanat Resume.pdf"
+          latex_file: "resume"
+          pdf_file: "Jed Abanat Resume.pdf"
           credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
           folderId: ${{ secrets.FOLDER_ID }}
 
       - name: Compile Cover Letter
         uses: ./.github/composite/compile-latex-pdf
         with:
-          file: "coverletter"
-          output: "Jed Abanat Cover Letter.pdf"
+          latex_file: "coverletter"
+          pdf_file: "Jed Abanat Cover Letter.pdf"
           credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
           folderId: ${{ secrets.FOLDER_ID }}
