@@ -17,10 +17,7 @@ runs:
         
     - name: Upload to gdrive
       uses: adityak74/google-drive-upload-git-action@main
-      env:
-        GOOGLE_DRIVE_CREDENTIALS: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
-        FOLDER_ID: ${{ secrets.FOLDER_ID }}
       with:
-        credentials: $GOOGLE_DRIVE_CREDENTIALS
+        credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
         filename: "resume.pdf"
-        folderId: $FOLDER_ID
+        folderId: ${{ secrets.FOLDER_ID }}
