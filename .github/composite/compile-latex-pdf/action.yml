@@ -24,14 +24,14 @@ runs:
         root_file: ${{ inputs.file }}.tex
         
     - name: Rename PDF file
-      run: mv ${{ inputs.file }}.pdf ${{ inputs.output }}
+      run: mv ${{ inputs.file }}.pdf "${{ inputs.output }}"
       shell: bash
       
     - name: Upload PDF file
       uses: actions/upload-artifact@v4
       with:
-        name: Resume
-        path: ${{ inputs.output }}
+        name: ${{ inputs.file }}
+        path: "${{ inputs.output }}"
         
     - name: Upload to Google Drive
       uses: willo32/google-drive-upload-action@v1
