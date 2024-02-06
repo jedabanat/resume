@@ -44,8 +44,8 @@ runs:
     - name: Upload to Google Drive
       uses: adityak74/google-drive-upload-git-action@v0.3
       with:
-          credentials: ${{ secrets.credentials }}
+          credentials: ${{ inputs.credentials }}
           filename: "${{ github.base_ref || github.ref_name }}/${{ inputs.pdf_file }}"
-          folderId: ${{ secrets.folder_id }}
+          folderId: ${{ inputs.folder_id }}
           overwrite: "true"
           mirrorDirectoryStructure: "true"
