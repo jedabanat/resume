@@ -40,4 +40,4 @@ runs:
         parent_folder_id: ${{ inputs.folder_id }}
         target: "${{ inputs.pdf_file }}"
         child_folder: ${{ github.base_ref || github.ref_name }}
-        override: true
+        overwrite: true
