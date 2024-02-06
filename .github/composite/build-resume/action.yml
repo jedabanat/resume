@@ -14,3 +14,11 @@ runs:
       with:
         name: Resume
         path: resume.pdf
+        
+      - name: Upload to gdrive
+        uses: adityak74/google-drive-upload-git-action@main
+        with:
+          credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
+          filename: "resume.pdf"
+          folderId: "19Mqptgm6DVZ9Qn4_UVWr2ZRfLsI8dzNl"
+
