@@ -7,9 +7,9 @@ inputs:
     required: true
     default: "resume"
   pdf_file:
-    description: PDF filename (without file extension)
+    description: PDF filename (with file extension)
     required: true
-    default: "resume"
+    default: "resume.pdf"
   credentials:
     description: Google Drive credentials
     required: true
