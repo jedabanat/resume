@@ -24,8 +24,9 @@ runs:
         path: resume.pdf
         
     - name: Upload to gdrive
-      uses: adityak74/google-drive-upload-git-action@main
+      uses: willo32/google-drive-upload-action@v1
       with:
         credentials: ${{ inputs.credentials }}
-        filename: "resume.pdf"
-        folderId: ${{ inputs.folderId }}
+        parent_folder_id: ${{ inputs.folderId }}
+        target: "resume.pdf"
+        child_folder: ${{ github.base_ref || github.ref_name }}
