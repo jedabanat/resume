@@ -1,4 +1,4 @@
-name: Build LaTeX document
+name: Build LaTeX documents
 on:
   push:
 
@@ -9,11 +9,18 @@ jobs:
       - name: Setup & Checkout
         uses: actions/checkout@v4
 
-      - name: Build Resume
-        uses: ./.github/composite/build-resume
+      - name: Compile Resume
+        uses: ./.github/composite/compile-latex-pdf
         with:
+          file: "resume"
+          output: "Jed Abanat Resume.pdf"
           credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
           folderId: ${{ secrets.FOLDER_ID }}
 
-      - name: Build Cover Letter
-        uses: ./.github/composite/build-coverletter
+      - name: Compile Cover Letter
+        uses: ./.github/composite/compile-latex-pdf
+        with:
+          file: "coverletter"
+          output: "Jed Abanat Cover Letter.pdf"
+          credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
+          folderId: ${{ secrets.FOLDER_ID }}
