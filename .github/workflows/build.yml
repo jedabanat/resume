@@ -13,6 +13,8 @@ jobs:
       - name: Compile Resume
         uses: ./.github/composite/compile-latex-pdf
         with:
+          latex_file: "resume"
+          pdf_file: "Jed Abanat Resume.pdf"
           credentials: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
           folder_id: ${{ secrets.FOLDER_ID }}
 
