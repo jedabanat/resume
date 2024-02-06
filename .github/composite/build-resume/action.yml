@@ -19,6 +19,7 @@ runs:
         
     - name: Rename PDF file
       run: mv resume.pdf "Jed Abanat Resume.pdf"
+      shell: bash
       
     - name: Upload PDF file
       uses: actions/upload-artifact@v4
