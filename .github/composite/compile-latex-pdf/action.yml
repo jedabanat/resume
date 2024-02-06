@@ -39,6 +39,7 @@ runs:
       run: >
         mkdir -p "${{ github.base_ref || github.ref_name }}" &&
         cp -r "${{ inputs.pdf_file }}" "${{ github.base_ref || github.ref_name }}/"
+      shell: bash
 
     - name: Upload to Google Drive
       uses: adityak74/google-drive-upload-git-action@v0.3
