@@ -1,16 +1,19 @@
 % Jed Abanat Resume - General
-\documentclass[10pt,letterpaper]{article}
+\documentclass[10pt,a4paper]{article}
 
 % Import configuration
-\input{config/resume}
+\input{config/packages}
 \input{config/commands}
 \input{config/formatting}
+
+% Import additional package for resume use
+\usepackage[document]{ragged2e}
 
 % Import resume sections
 \begin{document}
 \input{sections/header}
 \input{sections/summary}
-\input{sections/experience}
 \input{sections/skills}
+\input{sections/experience}
 \input{sections/education}
 \end{document}
